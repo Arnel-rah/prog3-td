@@ -1,4 +1,4 @@
-package jdbc;
+package jdbc.classe;
 
 public class Category {
     private final int id;
