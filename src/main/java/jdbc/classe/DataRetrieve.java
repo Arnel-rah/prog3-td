@@ -26,4 +26,26 @@ public class DataRetrieve {
             return categories;
         }
     }
+
+    public static List<Product> getProductList (int page, int size){
+        List<Product> products = new ArrayList<>();
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery("select * from product limit "+(page*size)+","+size);
+            while (rs.next()) {
+                Product p = new Product(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getTimestamp("creationdatetime").toInstant(),
+                        (Category) rs.getObject("category")
+                );
+                products.add(p);
+            }
+            return products;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
