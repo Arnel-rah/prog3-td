@@ -13,7 +13,7 @@ import jdbc.db.DBConnection;
 
 public class DataRetrieve {
 
-    public static List<Category> getAllCategories() throws SQLException {
+    public  List<Category> getAllCategories() throws SQLException {
         List<Category> categories = new ArrayList<>();
         try (Connection con = DBConnection.getConnection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery("SELECT id, name FROM category")) {
             while (rs.next()) {
@@ -27,7 +27,7 @@ public class DataRetrieve {
         }
     }
 
-    public static List<Product> getProductList(int page, int size) {
+    public  List<Product> getProductList(int page, int size) {
         List<Product> products = new ArrayList<>();
         try {
             Connection con = DBConnection.getConnection();
