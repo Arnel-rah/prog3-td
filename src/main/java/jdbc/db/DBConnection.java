@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-       String URL = "jdbc:postgresql://localhost:5432/product_management_db";
-       String USER = "product_manager_user";
-       String PASSWORD = "123456";
 
-    public static Connection getConnection() {
+    private String URL = "jdbc:postgresql://localhost:5432/product_management_db";
+    private String USER = "product_manager_user";
+    private String PASSWORD = "123456";
+
+    public Connection getConnection() {
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
