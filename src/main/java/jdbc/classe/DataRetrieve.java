@@ -15,7 +15,9 @@ public class DataRetrieve {
 
     public  List<Category> getAllCategories() throws SQLException {
         List<Category> categories = new ArrayList<>();
-        try (Connection con = DBConnection.getConnection(); Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery("SELECT id, name FROM category")) {
+        try (Connection con = DBConnection.getConnection();
+             Statement stmt = con.createStatement();
+              ResultSet rs = stmt.executeQuery("SELECT id, name FROM category")) {
             while (rs.next()) {
                 Category c = new Category(
                         rs.getInt("id"),
@@ -31,6 +33,7 @@ public class DataRetrieve {
         List<Product> products = new ArrayList<>();
         try {
             Connection con = DBConnection.getConnection();
+
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery("select * from product limit " + (page * size) + "," + size);
             while (rs.next()) {
