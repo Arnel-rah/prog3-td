@@ -34,4 +34,14 @@ public class Product {
     public String getCategoryName(Category category) {
         return category.getName();
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", Creationdatetime=" + Creationdatetime +
+                ", category=" + category +
+                '}';
+    }
 }
